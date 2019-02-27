@@ -2,10 +2,18 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+
+import TransitionProvider from './components/TransitionProvider';
+
 import App from './App';
 
 ReactDOM.render(
-  <App />,
+  <BrowserRouter>
+    <TransitionProvider>
+      <App />
+    </TransitionProvider>
+  </BrowserRouter>,
   document.getElementById('app'),
 );
 

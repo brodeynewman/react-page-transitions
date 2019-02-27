@@ -1,13 +1,28 @@
 import React from 'react';
-import Counter from './components/Counter';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+
 import './App.css';
+import Router from './Router';
+import Transitions from './components/Transitions';
 
-const App = () => (
-  <div className="flex min-h-screen font-sans bg-grey-lighter items-center">
-    <div className="container mx-auto text-center">
-      <Counter />
-    </div>
-  </div>
-);
+class App extends React.Component {
+  state = {};
 
-export default App;
+  static propTypes = {
+    history: PropTypes.shape({}).isRequired,
+  }
+
+  render() {
+    return (
+      <div className="flex min-h-screen font-sans bg-grey-lighter justify-center">
+        <div>
+          <Transitions />
+          <Router />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default withRouter(App);

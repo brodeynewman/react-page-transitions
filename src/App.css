@@ -3,3 +3,144 @@
 @tailwind components;
 
 @tailwind utilities;
+
+/** FADE IN **/
+
+.fadeInOpacity {
+  display: inline-block;
+  margin-left: 0.5rem;
+  opacity: 0;
+}
+
+.fadeInOpacity-enter {
+  opacity: .2;
+}
+
+.fadeInOpacity-enter-active {
+  opacity: 1;
+  transition: all 300ms ease-out;
+}
+
+.fadeInOpacity-exit {
+  opacity: 1;
+  transition: all 300ms ease-in;
+}
+
+.fadeInOpacity-exit-active {
+  opacity: 0;
+  transition: all 300ms ease-in;
+}
+
+/** RAISE DOWN **/
+
+.raiseDown {
+  display: inline-block;
+  transform: translateY(-10%);
+}
+
+.raiseDown-enter {
+  transform: translateY(-5%);
+}
+
+.raiseDown-enter-active {
+  transform: translateY(0%);
+  transition: all 300ms ease-out;
+}
+
+.raiseDown-exit {
+  transform: translateY(0%);
+  transition: all 300ms ease-in;
+}
+
+.raiseDown-exit-active {
+  transform: translateY(-10%);
+  transition: all 300ms ease-in;
+}
+
+/** RAISE UP **/
+
+.raiseUp {
+  display: inline-block;
+  transform: translateY(10%);
+}
+
+.raiseUp-enter {
+  transform: translateY(5%);
+}
+
+.raiseUp-enter-active {
+  transform: translateY(0%);
+  transition: all 300ms ease-out;
+}
+
+.raiseUp-exit {
+  transform: translateY(0%);
+  transition: all 300ms ease-in;
+}
+
+.raiseUp-exit-active {
+  transform: translateY(10%);
+  transition: all 300ms ease-in;
+}
+
+/** RAISE UP WITH OPACITY **/
+
+.raiseUpOpacity {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10%);
+}
+
+.raiseUpOpacity-enter {
+  opacity: .2;
+  transform: translateY(5%);
+}
+
+.raiseUpOpacity-enter-active {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: all 300ms ease-out;
+}
+
+.raiseUpOpacity-exit {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: all 300ms ease-in;
+}
+
+.raiseUpOpacity-exit-active {
+  opacity: 0;
+  transform: translateY(10%);
+  transition: all 300ms ease-in;
+}
+
+/** RAISE DOWN OPACITY **/
+
+.raiseDownOpacity {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-10%);
+}
+
+.raiseDownOpacity-enter {
+  opacity: .2;
+  transform: translateY(-5%);
+}
+
+.raiseDownOpacity-enter-active {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: all 300ms ease-out;
+}
+
+.raiseDownOpacity-exit {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: all 300ms ease-in;
+}
+
+.raiseDownOpacity-exit-active {
+  opacity: 0;
+  transform: translateY(-10%);
+  transition: all 300ms ease-in;
+}
