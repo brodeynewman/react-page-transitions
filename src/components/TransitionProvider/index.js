@@ -56,6 +56,18 @@ class TransitionProvider extends React.Component {
         className: 'raiseDownOpacity',
         onClick: this.handlePushState,
       },
+      {
+        name: 'Slide Right',
+        path: '/slide-right',
+        className: 'slideRight',
+        onClick: this.handlePushState,
+      },
+      {
+        name: 'Slide Left',
+        path: '/slide-left',
+        className: 'slideLeft',
+        onClick: this.handlePushState,
+      },
     ];
   }
 

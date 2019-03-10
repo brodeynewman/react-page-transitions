@@ -27,7 +27,8 @@ class Home extends React.Component {
         in={Boolean(activeTransition)}
         classNames={_.get(activeTransition, 'className', '')}
         timeout={_.get(activeTransition, 'timeout', 300)}
-        unmountOnExit={_.get(activeTransition, 'unmountOnExit', true)}
+        transitionLeaveTimeout={300}
+        onExit={() => console.log('exiting')}
       >
         {() => activeTransition && ((
           <div className="container mx-auto text-center w-3/4 bg-white" style={{ height: 600 }}>
