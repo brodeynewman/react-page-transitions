@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -14,32 +15,46 @@ class TransitionProvider extends React.Component {
     activeTransition: null,
   };
 
+  componentDidMount() {
+    const { history } = this.props;
+
+    const matchingTransition = _.find(this.transitions, trans => (
+      trans.path === history.location.pathname));
+
+    if (matchingTransition) this.handlePushState(matchingTransition)();
+  }
+
   get transitions() {
     return [
       {
         name: 'Fade in with opacity',
-        onClick: this.handlePushState('/fade-opacity'),
+        path: '/fade-opacity',
         className: 'fadeInOpacity',
+        onClick: this.handlePushState,
       },
       {
         name: 'Raise up',
-        onClick: this.handlePushState('/raise-up'),
+        path: '/raise-up',
         className: 'raiseUp',
+        onClick: this.handlePushState,
       },
       {
         name: 'Raise down',
-        onClick: this.handlePushState('/raise-down'),
+        path: '/raise-down',
         className: 'raiseDown',
+        onClick: this.handlePushState,
       },
       {
         name: 'Raise up with opacity',
-        onClick: this.handlePushState('/raise-up-opacity'),
+        path: '/raise-up-opacity',
         className: 'raiseUpOpacity',
+        onClick: this.handlePushState,
       },
       {
         name: 'Raise down with opacity',
-        onClick: this.handlePushState('/raise-down-opacity'),
+        path: '/raise-down-opacity',
         className: 'raiseDownOpacity',
+        onClick: this.handlePushState,
       },
     ];
   }
@@ -50,7 +65,7 @@ class TransitionProvider extends React.Component {
     };
   }
 
-  handlePushState = path => activeTransition => () => {
+  handlePushState = activeTransition => () => {
     const { history } = this.props;
 
     this.setState({ activeTransition: null });
@@ -58,15 +73,13 @@ class TransitionProvider extends React.Component {
     setTimeout(() => {
       this.setState({ activeTransition });
 
-      history.push(path);
+      history.push(activeTransition.path);
     }, activeTransition.buffer || 300);
   }
 
   render() {
     const { children } = this.props;
     const { activeTransition } = this.state;
-
-    console.log(activeTransition);
 
     return (
       <TransitionContext.Provider value={{

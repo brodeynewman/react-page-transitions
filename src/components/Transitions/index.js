@@ -1,8 +1,16 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import withTransition from '../withTransition';
+
+const styles = {
+  hovered: {
+    backgroundColor: '#f1f5f8',
+    transition: 'all .2s ease',
+  },
+};
 
 class Transitions extends React.Component {
   static propTypes = {
@@ -12,22 +20,43 @@ class Transitions extends React.Component {
     })).isRequired,
   }
 
-  state = {};
+  state = {
+    hoveredIndex: null,
+  };
+
+  handleHoverToggle = hoveredIndex => () => this.setState({
+    hoveredIndex,
+  });
+
+  handleMouseLeave = () => this.setState({
+    hoveredIndex: null,
+  });
 
   render() {
     const { transitions } = this.props;
+    const { hoveredIndex } = this.state;
 
     return (
-      <div className="bg-transparent mb-20 mt-10 flex justify-center m-auto flex-wrap" style={{ maxWidth: 600 }}>
-        {_.map(transitions, transition => (
-          <button
-            className="bg-white pt-3 pb-3 pr-6 pl-6 shadow rounded-sm bg-teal-dark text-white mt-5 ml-5 mr-5"
-            type="button"
-            onClick={transition.onClick(transition)}
-          >
-            {transition.name}
-          </button>
-        ))}
+      <div className="bg-transparent" style={{ maxWidth: 600 }}>
+        <h2 className="border-b border-grey-light rounded pt-5 pb-5 pl-6 font-bold text-blue-darker">Transitions</h2>
+        <div>
+          {_.map(transitions, (transition, index) => (
+            /* eslint-disable-next-line */
+            <NavLink
+              key={transition.path}
+              to={transition.path}
+              activeStyle={styles.hovered}
+              style={hoveredIndex === index ? styles.hovered : {}}
+              onFocus={this.handleHoverToggle(index)}
+              onMouseOver={this.handleHoverToggle(index)}
+              onMouseLeave={this.handleMouseLeave}
+              className="block w-full bg-white pt-6 pb-6 pr-6 pl-6 rounded-sm no-underline text-left text-blue-darker font-medium"
+              onClick={transition.onClick(transition)}
+            >
+              {transition.name}
+            </NavLink>
+          ))}
+        </div>
       </div>
     );
   }

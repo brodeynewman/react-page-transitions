@@ -15,9 +15,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="flex min-h-screen font-sans bg-grey-lighter justify-center">
-        <div>
+      <div className="flex min-h-screen font-sans bg-grey-lighter">
+        <div className="bg-white shadow bg-white rounded-sm border-grey-light border" style={{ maxWidth: 400, width: 400 }}>
           <Transitions />
+        </div>
+        <div className="flex justify-center items-center" style={{ maxWidth: 800, width: 800 }}>
           <Router />
         </div>
       </div>
