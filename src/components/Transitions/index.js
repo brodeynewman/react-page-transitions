@@ -38,7 +38,11 @@ class Transitions extends React.Component {
 
     return (
       <div className="bg-transparent" style={{ maxWidth: 600 }}>
-        <h2 className="border-b border-grey-light rounded pt-5 pb-5 pl-6 font-bold text-blue-darker">Transitions</h2>
+        <h2 className="border-b border-grey-light rounded pt-5 pb-5 pl-6 font-bold text-blue-darker">
+          <NavLink to="/" className="no-underline text-blue-darker">
+            Transitions
+          </NavLink>
+        </h2>
         <div>
           {_.map(transitions, (transition, index) => (
             /* eslint-disable-next-line */
